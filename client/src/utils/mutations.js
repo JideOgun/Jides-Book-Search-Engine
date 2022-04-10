@@ -12,3 +12,20 @@ mutation login($email: String!, $password: String!) {
     }
 }
 `
+
+export const ADD_BOOK = gql`
+mutation addBook($bookId: ID, $title: String, $description: String ) {
+    addBook(bookId: $bookId, title: $title, description: $description) {
+        _id
+        savedBooks {
+            title
+            authors
+            description
+            bookId
+            image
+        }
+    }
+}
+
+
+`
