@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Jumbotron,
   Container,
@@ -14,16 +14,11 @@ import { QUERY_ME } from "../utils/queries";
 import { REMOVE_BOOK } from "../utils/mutations";
 
 const SavedBooks = () => {
-  // const [userData, setUserData] = useState({});
   const { loading, data, error } = useQuery(QUERY_ME);
   const [removeBook] = useMutation(REMOVE_BOOK);
   console.log(data);
   const userData = data?.me || { savedBooks: [] };
   console.log(userData);
-
-  useEffect(() => {
-    return () => removeBookId();
-  });
 
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
