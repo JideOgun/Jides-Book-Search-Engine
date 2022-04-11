@@ -9,7 +9,6 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
-          .populate("savedBooks");
 
         return userData;
       }
@@ -17,17 +16,16 @@ const resolvers = {
     },
     // get all users
     users: async () => {
-      return User.find().select("-__v -password").populate("savedBooks");
+      return User.find().select("-__v -password");
     },
     // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select("-__v -password")
-        .populate("savedBooks");
     },
     // get saved books
     savedBooks: async () => {
-      return User.find().populate("savedBooks");
+      return User.find();
     },
   },
   Mutation: {
