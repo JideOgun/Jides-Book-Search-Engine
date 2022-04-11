@@ -87,7 +87,7 @@ const SearchBooks = () => {
 
       // addBook({ variables: bookToSave})
       // const response = await addBook({ variables: bookToSave});
-      if (!data.ok) {
+      if (!data) {
         throw new Error("something went wrong!");
       }
 
